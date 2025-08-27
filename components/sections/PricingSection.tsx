@@ -23,7 +23,8 @@ const plans = [
   },
   {
     name: "Plano Vitalício",
-    price: "20x R$ 256",
+    price: "R$ 256,00",
+    priceDetails: "/20x",
     period: "(ou R$ 4.500,00 à vista)",
     icon: Crown,
     description: "Mais escolhido 🚀",
@@ -108,10 +109,17 @@ export default function PricingSection() {
                     <span className="text-2xl sm:text-3xl lg:text-4xl font-black text-gray-900">
                       {plan.price}
                     </span>
-                    <span className="text-base sm:text-lg text-gray-500 ml-2 font-medium">
-                      {plan.period}
+                    <span className="text-base sm:text-lg text-gray-500 ml-1 font-medium">
+                      {/* @ts-ignore */}
+                      {plan.priceDetails || plan.period}
                     </span>
                   </div>
+                    {/* @ts-ignore */}
+                  {plan.priceDetails && (
+                    <p className="text-base sm:text-lg text-gray-500 font-medium">
+                      {plan.period}
+                    </p>
+                  )}
                   {plan.name === "Plano Vitalício" && (
                     <p className="text-base text-gray-700 font-semibold mt-2">
                       Acesso vitalício, sem mensalidade
